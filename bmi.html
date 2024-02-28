@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BMI calculator</title>
+        <style>
+            body{
+                background: linear-gradient(to right, #33ccff 0%, #ff99cc 100%);
+            }
+            center{
+                margin-top: 50px;
+                margin-bottom: 50px;
+            }
+            .form{
+                margin-left:400px;
+                padding-top: 50px;
+                padding-left: 250px;
+                color: black;
+                width: 500px;
+                height: 300px;
+                box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+            }
+            .button-arounder {
+                background-color: #0078d0;
+                border: 0;
+                border-radius: 56px;
+                color: #fff;
+                cursor: pointer;
+                display: inline-block;
+                font-family: system-ui,-apple-system,system-ui,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
+                font-size: 18px;
+                font-weight: 600;
+                outline: 0;
+                padding: 16px 21px;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                transition: all .3s;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+            }
+
+            .button-arounder:before {
+                background-color: initial;
+                background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+                border-radius: 125px;
+                content: "";
+                height: 50%;
+                left: 4%;
+                opacity: .5;
+                position: absolute;
+                top: 0;
+                transition: all .3s;
+                width: 92%;
+            }
+
+            .button-arounder:hover {
+                box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+                transform: scale(1.05);
+            }
+
+            @media (min-width: 768px) {
+            .button-arounder {
+                padding: 16px 48px;
+            }
+            }
+        </style>
+    </head>
+    <body>
+        <center><h1>BMI Calculator</h1></center>
+        <div class="form">
+            <label for="height">Height(in cms)</label><br>
+            <input type="number" id="height"><br><br>
+            <label for="weight">Weight(in kgs)</label><br>
+            <input type="number" id="weight"><br><br>
+            <button class="button-arounder" onclick="calc()">Calculate</button>
+            <p id="bmi"></p>
+            <p id="line"></p>
+        </div>
+    </body>
+    <script>
+        function calc()
+        {
+
+            var h=document.getElementById("height").value; 
+            var w=document.getElementById("weight").value;
+            var res=parseFloat(w)/(((parseFloat(h))/100)**2);
+            document.getElementById("bmi").innerHTML=res;
+            if(res<18.6)
+            document.getElementById("line").innerHTML="Under Weight";
+            else if(res<24.9)
+            document.getElementById("line").innerHTML="Normal";
+            else
+            document.getElementById("line").innerHTML="Over Weight";
+        }
+    </script>
+</html>
